@@ -1,21 +1,13 @@
-version: '3.7'
+version: "3.3"
 
 services:
   web_static:
     build: ./web-static
-    #expose:
-    #  - "8080"
-    environment:
-     - SERVICE_PORTS=8080
     networks:
       - web
   
   web_ui:
     build: ./web-ui
-    #expose:
-    #  - "8081"
-    environment:
-     - SERVICE_PORTS=8081
     networks:
       - web
 
@@ -28,12 +20,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
     ports:
-      - 80:80
+      - 9000:9000
     networks:
       - web
-    #deploy:
-    #  placement:
-    #    constraints: [node.role == manager]
 
 networks:
   web:
