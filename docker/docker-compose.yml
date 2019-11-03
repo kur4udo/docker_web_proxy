@@ -3,11 +3,15 @@ version: "3.3"
 services:
   web_static:
     build: ./web-static
+    ports:
+      - 8080:8080
     networks:
       - web
   
   web_ui:
     build: ./web-ui
+    ports:
+      - 8081:8081
     networks:
       - web
 
